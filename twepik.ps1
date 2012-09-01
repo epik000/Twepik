@@ -120,6 +120,11 @@ While ($command -ne "Q")
             }
 
             "N" {
+                if ($pageNumber -eq 1)
+                {
+                    $first = 1
+                    $lastLatestStatusID = $statuses.$first.Id
+                }              
                 $timelineOptions.Page++
             }
 
