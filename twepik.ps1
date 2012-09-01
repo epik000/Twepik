@@ -77,19 +77,17 @@ While ($command -ne "Q")
             $updateOrderNo++
         }
 
-        
-        if ($pageNumber -eq 1)
-        {
-            $first = 1
-            $lastLatestStatusID = $statuses.$first.Id
-        }
-
         Write-Host "Options: (r)efresh, (t)weet, ret(w)eet, (n)ext page, (l)ast page, (m)entions, (o)pen link, (s)earch or (q)uit?" -ForegroundColor Green
         $command = [Console]::ReadKey($true).Key
 
         switch ($command)
         {
             "R" {
+                if ($pageNumber -eq 1)
+                {
+                    $first = 1
+                    $lastLatestStatusID = $statuses.$first.Id
+                }
                 $timelineOptions.Page = 1
             }
 
